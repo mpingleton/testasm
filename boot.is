@@ -1,0 +1,13 @@
+package org.iridiumlang.examples.bootloader
+
+import System
+
+@EntryPoint @BootSector @x86 @Bios
+fun start() {
+	Terminal.out('A')	// Uses BIOS-specific INT 0x10 method. 
+	Cpu.halt()
+}
+
+// Compile target is Bios bootloader.
+// ic -o ./boot.ib boot.is
+// ib-x86 -o ./boot.bin ./boot.ib --bios-bootloader
